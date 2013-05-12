@@ -2,10 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu_base"
-  config.vm.hostname = "chefserver"
+  config.vm.box = "centos_base"
+  config.vm.hostname = "jenkins-chef"
   config.vm.guest = "linux"
+  config.vm.synced_folder "cookbooks", "/cookbooks"
+  config.vm.synced_folder "chef", "/etc/chef"
   config.vm.provider "vmware_fusion" do |v|
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
 #    v.gui = true
     v.vmx["memsize"] = "1028"
     v.vmx["usb.vbluetooth.startConnected"] = "FALSE"
@@ -13,6 +16,17 @@ Vagrant.configure("2") do |config|
     v.vmx["hard-disk.hostBuffer"] = "disabled"
     v.vmx["annotation"] = "Building a chef server"
   end
+#  config.vm.provision :chef_solo do |chef|
+#    chef.add_recipe "git"
+#    chef.add_recipe "java"
+#    chef.add_recipe "jenkins::server"
+#    chef.add_recipe "jenkins::proxy_nginx"
+#    #chef.json = {
+#    #  "apache" => {
+#    #    "listen_address" => "0.0.0.0"
+#    #  }
+#    #}
+#  end
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
