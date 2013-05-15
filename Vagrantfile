@@ -15,14 +15,14 @@ Vagrant.configure("2") do |config|
     v.vmx["hard-disk.hostBuffer"] = "disabled"
     v.vmx["annotation"] = "Building a chef server"
   end
-#  config.vm.provision :chef_solo do |chef|
-#    chef.add_recipe "the_environment"
-#    chef.json = {
-#    "postgresql": {
-#       "password": {
-#          "postgres": "iloverandompasswordsbutthiswilldo"
-#          }
-#       }
-#    }
-#  end
+  config.vm.provision :chef_solo do |chef|
+    chef.add_recipe "the_environment"
+    chef.json = {
+    "postgresql" => {
+       "password" => {
+          "postgres" => "iloverandompasswordsbutthiswilldo"
+          }
+       }
+    }
+  end
 end

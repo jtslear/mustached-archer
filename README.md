@@ -19,24 +19,21 @@ This is a work in progress, I've run into the following problems:
 ##Usage:##
 
     vagrant up
-    vagrant ssh
-    sudo su -
-    chef-solo -j /etc/chef/node.js
 
 Then proceed to configuring Jenkins appropriately
 
 ##Other Notable Items##
-If a package is required add it to  ['the_environment']['packages']
+If a package is required add it to `node['the_environment']['packages']`
 
-Vagrant has a native ability for calling upon chef solo.  You can utilize this feature by uncommenting the following lines in the Vagrant file (your box have chef installed!):
+I utilize Vagrant's native ability for calling upon chef solo.  Should one want to avoid this simple comment the following lines in the Vagrant file:
 
-    #  config.vm.provision :chef_solo do |chef|
-    #    chef.add_recipe "the_environment"
-    #    chef.json = {
-    #    "postgresql": {
-    #       "password": {
-    #          "postgres": "iloverandompasswordsbutthiswilldo"
-    #          }
-    #       }
-    #    }
-    #  end
+      config.vm.provision :chef_solo do |chef|
+        chef.add_recipe "the_environment"
+        chef.json = {
+        "postgresql": {
+          "password": {
+              "postgres": "iloverandompasswordsbutthiswilldo"
+              }
+           }
+        }
+      end
