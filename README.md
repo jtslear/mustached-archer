@@ -10,11 +10,11 @@ This is a work in progress, I've run into the following problems:
  - I cannot create a postgresql role
  - This does not work in centOS
   - I suspect the pgdg yum recipe is not compatible with chef 11, and/or centos, but I need to complete more testing
-
 - Note that I utilize the vmware fusion provider for vagrant, simply rid of those configurations if fusion is not your choice guest os provider
 
 ##Requirements:##
  - Vagrant
+  - If one chooses not to use vagrant simply point the chef config to this cookbooks dir
 
 ##Usage:##
 
@@ -25,4 +25,18 @@ This is a work in progress, I've run into the following problems:
 
 Then proceed to configuring Jenkins appropriately
 
+##Other Notable Items##
 If a package is required add it to  ['the_environment']['packages']
+
+Vagrant has a native ability for calling upon chef solo.  You can utilize this feature by uncommenting the following lines in the Vagrant file (your box have chef installed!):
+
+    #  config.vm.provision :chef_solo do |chef|
+    #    chef.add_recipe "the_environment"
+    #    chef.json = {
+    #    "postgresql": {
+    #       "password": {
+    #          "postgres": "iloverandompasswordsbutthiswilldo"
+    #          }
+    #       }
+    #    }
+    #  end
