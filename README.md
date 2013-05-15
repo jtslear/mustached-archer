@@ -6,7 +6,7 @@ Using Chef, building a Jenkins CI server for code testing
 
 This is a work in progress, I've run into the following problems:
 
- - Not all plugins for Jenkins install, specifically, rbenv, and campfire
+ - Not all plugins for Jenkins install, specifically, rbenv
  - I cannot create a postgresql role
  - This does not work in centOS
   - I suspect the pgdg yum recipe is not compatible with chef 11, and/or centos, but I need to complete more testing
