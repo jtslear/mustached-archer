@@ -9,7 +9,7 @@ node.set['postgresql']['version'] = "9.2"
 #node.default['postgresql']['pgdg']['repo_rpm_url'] = "http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm"
 #node.default['postgresql']['version'] = "9.2"
 
-default['postgresql']['pg_hba'] = [
+node.default['postgresql']['pg_hba'] = [
   {
   :comment => "# created by chef \'the_environment\' for IPv4",
   :type => 'host', 
@@ -28,15 +28,15 @@ default['postgresql']['pg_hba'] = [
 },
 ]
 
-default['ruby_build']['install_pkgs_cruby'] =
+node.default['ruby_build']['install_pkgs_cruby'] =
   %w{ gcc-c++ patch readline readline-devel zlib zlib-devel
       libffi-devel openssl-devel
       make bzip2 autoconf automake libtool bison
       libxml2 libxml2-devel libxslt libxslt-devel
       git subversion autoconf }
 
-node[:jenkins][:server][:plugins] = 
+node.default[:jenkins][:server][:plugins] = 
   %w{ git-client git-server git github rbenv campfire }
 
 #default['yum']['exclude'] = "postgres*"
-#default['the_environment']['pg_packages'] = %w{ postgresql92 postgresql92-server }
+node.default['the_environment']['packages'] = %w{ libxml2-dev libxslt-dev }

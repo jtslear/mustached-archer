@@ -10,6 +10,12 @@ include_recipe "jenkins::server"
 include_recipe "nodejs::install_from_source"
 include_recipe "phantomjs"
 include_recipe "git"
+
+Array(node['the_environment']['packages']).each do |selections|
+  package selections do
+    action  :install
+  end
+end
 #include_recipe "rbenv::system"
 #include_recipe "ruby_build"
 
