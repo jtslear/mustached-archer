@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "cookbooks", "/cookbooks"
   config.vm.synced_folder "chef", "/etc/chef"
   config.vm.provider "vmware_fusion" do |v|
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
 #    v.gui = true
     v.vmx["memsize"] = "768"
     v.vmx["usb.vbluetooth.startConnected"] = "FALSE"

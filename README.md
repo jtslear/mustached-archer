@@ -21,6 +21,8 @@ This is a work in progress, I've run into the following problems:
     vagrant up
 
 Then proceed to configuring Jenkins appropriately
+ - If using vagrant, it can be accessed via http://localhost:8080
+ - If not using vagrant, use the IP of your host
 
 ##Other Notable Items##
 If a package is required add it to `node['the_environment']['packages']`
