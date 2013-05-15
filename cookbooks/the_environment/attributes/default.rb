@@ -32,7 +32,7 @@ node.default['ruby_build']['install_pkgs_cruby'] =
 # adding some plugins to jenkins
 # for some odd reason the rbenv and campfire plugins do not install
 node.default[:jenkins][:server][:plugins] = 
-  %w{ git-client git-server git github rbenv campfire }
+  %w{ git-client git-server git github ruby-runtime rbenv campfire }
 
 # The below are requirements for some gems
 node.default['the_environment']['packages'] = %w{ libxml2-dev libxslt-dev }
