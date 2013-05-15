@@ -24,3 +24,5 @@ This is a work in progress, I've run into the following problems:
     chef-solo -j /etc/chef/node.js
 
 Then proceed to configuring Jenkins appropriately
+
+If a package is required add it to  ['the_environment']['packages']

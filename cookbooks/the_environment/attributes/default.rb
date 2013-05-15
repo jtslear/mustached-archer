@@ -21,7 +21,7 @@ node.default['postgresql']['pg_hba'] = [
 },
 ]
 
-# the default recipe for ruby_build includes a pacakge that is not available on centos, overwriting it
+# the default recipe for ruby_build includes a package, libyaml, that is not available on centos, overwriting it
 node.default['ruby_build']['install_pkgs_cruby'] =
   %w{ gcc-c++ patch readline readline-devel zlib zlib-devel
       libffi-devel openssl-devel
