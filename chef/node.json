@@ -1,10 +1,9 @@
 {
+"postgresql": {
+    "password": {
+      "postgres": "iloverandompasswordsbutthiswilldo"
+    }
+  },
   "run_list": [ 
-    "recipe[postgresql::server]", 
-    "recipe[jenkins::server]", 
-    "recipe[rbenv::system]", 
-    "recipe[ruby_build]", 
-    "recipe[nodejs::install_from_source]", 
-    "recipe[phantomjs]", 
     "recipe[the_environment]" ]
 }

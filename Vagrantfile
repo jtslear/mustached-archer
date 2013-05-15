@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "centos_base"
+  config.vm.box = "ubuntu_base"
   config.vm.hostname = "jenkins-chef"
   config.vm.guest = "linux"
   config.vm.synced_folder "cookbooks", "/cookbooks"
@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "vmware_fusion" do |v|
   config.vm.network :forwarded_port, guest: 8080, host: 8080
 #    v.gui = true
-    v.vmx["memsize"] = "1028"
+    v.vmx["memsize"] = "768"
     v.vmx["usb.vbluetooth.startConnected"] = "FALSE"
     v.vmx["tools.syncTime"] = "FALSE"
     v.vmx["hard-disk.hostBuffer"] = "disabled"
