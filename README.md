@@ -10,35 +10,16 @@ This is a work in progress, I've run into the following problems:
  - This recipe does not work in centOS
   - I suspect the pgdg yum recipe is not compatible with chef 11, and/or centos, but I need to complete more testing (I needed a version higher than the centos repos)
 
- - Note that I utilize the vmware fusion provider for vagrant, simply rid of those configurations if fusion is not your choice guest os provider
- - If all goes well, there's no need for one to log into the server itself
-
 ##Requirements:##
- - Vagrant
-  - If one chooses not to use vagrant simply point the chef config to this cookbooks dir
  - Ubuntu
+ - Chef 10.x
 
 ##Usage:##
 
-    vagrant up
+    recipe['the_environment']
 
 Then proceed to configuring Jenkins appropriately
- - If using vagrant, it can be accessed via http://localhost:8080
- - If not using vagrant, use the IP of your host
  - Don't forget to configure git in Jenkins!
 
 ##Other Notable Items##
 If a package is required add it to `node['the_environment']['packages']`
-
-I utilize Vagrant's native ability for calling upon chef solo.  Should one want to avoid this simply comment the following lines in the Vagrant file and use chef-solo manually:
-
-      config.vm.provision :chef_solo do |chef|
-        chef.add_recipe "the_environment"
-        chef.json = {
-        "postgresql": {
-          "password": {
-              "postgres": "iloverandompasswordsbutthiswilldo"
-              }
-           }
-        }
-      end
