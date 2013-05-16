@@ -37,14 +37,4 @@ node.default[:jenkins][:server][:plugins] =
 # The below are requirements for some gems
 node.default['the_environment']['packages'] = %w{ libxml2-dev libxslt-dev }
 
-# Let us create the Jenkins User in postgres
-postgresql_connection_info = {:host => "127.0.0.1",
-  :port => node['postgresql']['config']['port'],
-  :username => 'postgres',
-  :password => node['postgresql']['password']['postgres']}
-
-postgresql_database_user 'jenkins' do
-  connection postgresql_connection_info
-  password 'super_secret'
-  action  :create
-end
+node.default['the_environment']['jenkins_user_postgresql_password'] = 'superduperpassword'
